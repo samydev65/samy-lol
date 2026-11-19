@@ -60,8 +60,26 @@ one-way hash first.
 
 To delete a comment, open the database in the Upstash console and edit the `comments` list.
 
+## Send changes to GitHub
+
+This folder is already a git repo pointed at `github.com/samydev65/samy-lol`. After you make
+changes, run:
+
+```
+npm run ship
+```
+
+or with your own description of what changed:
+
+```
+npm run ship -- "Added a new video"
+```
+
+That saves everything and pushes it to GitHub. If Vercel is connected to the repo, the live
+site updates by itself a minute later.
+
 ## Put it online at samy.lol
 
-1. Push this folder to a GitHub repo.
+1. Run `npm run ship` to push this folder to GitHub.
 2. Go to https://vercel.com, sign in with GitHub, click **Add New → Project**, and import the repo. Vercel detects Next.js automatically.
 3. In the project's **Settings → Domains**, add `samy.lol` and follow the DNS instructions it shows for wherever you bought the domain.
