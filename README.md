@@ -15,8 +15,8 @@
 
 **[samy.lol](https://samy.lol)** is where I put my projects, videos and notes. I'm into
 computer engineering, so I built it myself and laid it out like a classic encyclopedia page: a
-sidebar, an article with an infobox and a table of contents, and a "Talk" page where you can
-leave me a comment.
+sidebar, an article with an infobox and a table of contents, and a contact form that sends
+messages straight to my inbox.
 
 ## Features
 
@@ -25,16 +25,18 @@ leave me a comment.
 - **Pixel-art portrait:** the profile picture and browser icon are a hand-made 32×40 sprite,
   drawn as text in [`scripts/draw-sprite.mjs`](scripts/draw-sprite.mjs).
 - **Projects and videos:** a project table and a video gallery that are easy to add to.
-- **Talk page:** visitors can leave one comment each, with basic spam protection.
+- **Contact form:** messages are e-mailed to me with the sender's address as the reply-to,
+  limited to one per visitor per day with basic spam protection.
 - **Guest visitor counter:** a small badge that counts unique visitors.
 - **Privacy-friendly:** visitor IP addresses are never stored. They are turned into one-way
-  hashes, only to stop repeat comments and double counting.
+  hashes, only to rate-limit the contact form and avoid double counting.
 
 ## Built with
 
 - [Next.js](https://nextjs.org) and [React](https://react.dev)
 - Plain CSS
-- [Upstash Redis](https://upstash.com) for comments and the visitor count
+- [Upstash Redis](https://upstash.com) for the visitor count and rate limiting
+- [Resend](https://resend.com) for contact-form e-mail
 - Hosted on [Vercel](https://vercel.com)
 
 ## Running it locally
@@ -48,16 +50,17 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:3000. Without a database connected, comments and visits are saved
-to a local file (`.data/store.json`) that is not committed.
+Then open http://localhost:3000. Without a database connected, visits are saved to a local file
+(`.data/store.json`) that is not committed. Without an e-mail key, contact messages are
+printed in the terminal instead of sent.
 
 ## Project layout
 
 | Folder | What's inside |
 |---|---|
-| `app/` | Pages (home, about, projects, videos, talk, contact) and API routes |
-| `components/` | Shared pieces: sidebar navigation, tabs, infobox, comments, visitor badge |
-| `lib/` | Site links and the storage code for comments and visits |
+| `app/` | Pages (home, about, projects, videos, contact) and API routes |
+| `components/` | Shared pieces: sidebar navigation, tabs, infobox, contact form, visitor badge |
+| `lib/` | Site links and the storage code for visits and rate limiting |
 | `scripts/` | The pixel-art sprite drawer and a helper for pushing changes |
 | `public/` | Images |
 

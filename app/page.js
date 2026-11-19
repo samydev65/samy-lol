@@ -63,7 +63,6 @@ export default function Home() {
       <h2 id="see-also">See also</h2>
       <ul className="plain">
         <li><Link href="/about">About</Link></li>
-        <li><Link href="/talk">Talk page</Link></li>
         <li><Link href="/contact">Contact</Link></li>
       </ul>
     </>

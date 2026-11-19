@@ -1,3 +1,4 @@
+import ContactForm from "../../components/ContactForm";
 import { EMAIL, SOCIALS } from "../../lib/site";
 
 export const metadata = { title: "Contact" };
@@ -18,15 +19,9 @@ export default function Contact() {
         </tbody>
       </table>
 
-      <h2>Send a message</h2>
-      {/* No server needed: this opens the visitor's e-mail app with the message filled in. */}
-      <form className="form" action={`mailto:${EMAIL}`} method="post" encType="text/plain">
-        <label htmlFor="name">Name</label>
-        <input id="name" name="name" autoComplete="name" />
-        <label htmlFor="msg">Message</label>
-        <textarea id="msg" name="message" />
-        <button className="button" type="submit">Send</button>
-      </form>
+      <h2>Send me a message</h2>
+      <p>Fill this in and it lands straight in my inbox. Leave your e-mail so I can write back.</p>
+      <ContactForm />
     </>
   );
 }

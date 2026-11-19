@@ -45,8 +45,7 @@ export default function RootLayout({ children }) {
               <p>This page was last edited on {LAST_EDITED}.</p>
               <p>
                 Text is available for reading, linking and sharing. ·{" "}
-                <Link href="/about">About samy.lol</Link> · <Link href="/talk">Talk</Link> ·{" "}
-                <Link href="/contact">Contact</Link>
+                <Link href="/about">About samy.lol</Link> · <Link href="/contact">Contact</Link>
               </p>
             </footer>
           </div>
