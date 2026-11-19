@@ -1,0 +1,103 @@
+// Draws the 16-bit style character portrait used in the infobox (public/me.png)
+// and the browser-tab icon (app/icon.png).
+// Each string is one row of pixels; each letter is a color from PALETTE.
+// Edit the letters to redraw, then run:  node scripts/draw-sprite.mjs
+import sharp from "sharp";
+import path from "node:path";
+
+const PALETTE = {
+  ".": "#9fb7cf", // backdrop
+  K: "#1c1a24",   // outline
+  H: "#8a5a2b",   // hair
+  h: "#5e3a1a",   // hair shadow
+  L: "#c08a4a",   // hair highlight
+  S: "#f2c6a8",   // skin
+  s: "#d79f80",   // skin shadow
+  W: "#ffffff",   // eye white
+  E: "#3f6fb5",   // iris
+  P: "#1c1a24",   // pupil
+  M: "#b5605a",   // mouth
+  N: "#2f3e5c",   // crewneck sweatshirt
+  n: "#232f47",   // sweatshirt shadow
+  R: "#3d5078",   // ribbed collar
+  T: "#f4f4f4",   // white tee
+  t: "#cfd3da",   // white tee shadow
+};
+
+// 32 x 40
+const SPRITE = [
+  "................................",
+  "..........KK...KKK..KK..........",
+  "........KKLHK.KLHHKKLHK.........",
+  "......KKHLHHHKHLHHHHLHHHKK......",
+  ".....KHLHHhHHHLHHHhHHLLHHHK.....",
+  "....KHLHHhHHLLHHHHhHLHHHhHHK....",
+  "...KHLHHhHHLHHHhHHLHHHhHHLHHK...",
+  "..KHHLHhHHLHHhHHLHhHHHLHhHHLHK..",
+  "..KHLHhHHHhHHLHHHhHHHLHHhHHHLK..",
+  ".KHHhHHhHHHhHHhHHHHhHHhHHHhHHHK.",
+  ".KHLhHHhHHHhHHHhHHHhHHHhHHLhHHK.",
+  "..KHhHHHhHHhSHHHhHHSHhHHhHHhHK..",
+  "..KHhHHhHShHhSShHhSShHSHhHHhHK..",
+  "..KHHhHhSShSShSSShSShSSShHhHHK..",
+  "...KHHHShhhhSSSSSSSShhhhSHHHK...",
+  "...KHHHSSKKKKSSSSSSKKKKSSHHHK...",
+  "...KHHHSSWEPWSSSSSSWPEWSSHHHK...",
+  "...KHHHSSsEEsSSSSSSsEEsSSHHHK...",
+  "...KHKSSSSSSSSsSSSSSSSSSSSKHK...",
+  "...KHKSSSSSSSSsSSSSSSSSSSSKHK...",
+  "...KHKsSSSSSSsssSSSSSSSSSSKHK...",
+  "....KHhSSSSSSSSSSSSSSSSSShHK....",
+  ".....KKSSSSSSMMMMMMSSSSSSKK.....",
+  "......KsSSSSSSssssSSSSSSsK......",
+  "......KssSSSSSSSSSSSSSSssK......",
+  ".......KssSSSSSSSSSSSSssK.......",
+  "........KssSSSSSSSSSSssK........",
+  ".........KKssssssssssKK.........",
+  "...........KsSSSSSSsK...........",
+  "...........KsSSSSSSsK...........",
+  "....KKKKKKKKTTTTTTTTKKKKKKKK....",
+  "...KNNNNNNNRtTTTTTTtRNNNNNNNK...",
+  "..KNNNNNNNNRRttttttRRNNNNNNNNK..",
+  ".KNNNNNNNNNNRRRRRRRRNNNNNNNNNNK.",
+  ".KNNNNNNNNNNNNNNNNNNNNNNNNNNNNK.",
+  ".KNNnNNNNNNNNNNNNNNNNNNNNNNnNNK.",
+  ".KNnNNNNNNNNNNNNNNNNNNNNNNNNnNK.",
+  ".KNnNNNNNNNNNNNNNNNNNNNNNNNNnNK.",
+  ".KnNNNNNNNNNNNNNNNNNNNNNNNNNNnK.",
+  ".KnNNNNNNNNNNNNNNNNNNNNNNNNNNnK.",
+];
+
+const SCALE = 16; // each sprite pixel becomes 16x16 real pixels
+const out = process.argv[2] || path.join(process.cwd(), "public", "me.png");
+
+const w = 32, h = SPRITE.length;
+const raw = Buffer.alloc(w * h * 3);
+SPRITE.forEach((row, y) => {
+  if (row.length !== w) throw new Error(`Row ${y} is ${row.length} wide, expected ${w}: "${row}"`);
+  [...row].forEach((ch, x) => {
+    const hex = PALETTE[ch];
+    if (!hex) throw new Error(`Unknown color "${ch}" at row ${y}, col ${x}`);
+    const n = parseInt(hex.slice(1), 16);
+    raw.set([n >> 16, (n >> 8) & 255, n & 255], (y * w + x) * 3);
+  });
+});
+
+await sharp(raw, { raw: { width: w, height: h, channels: 3 } })
+  .resize(w * SCALE, h * SCALE, { kernel: "nearest" })
+  .png({ palette: true })
+  .toFile(out);
+
+console.log(`Saved ${out} (${w}x${h} sprite at ${SCALE}x)`);
+
+// Favicon: a square crop of the head (rows 0-29, cols 1-30), saved where Next.js
+// picks it up automatically for the browser tab and search results.
+if (!process.argv[2]) {
+  const icon = path.join(process.cwd(), "app", "icon.png");
+  await sharp(raw, { raw: { width: w, height: h, channels: 3 } })
+    .extract({ left: 1, top: 0, width: 30, height: 30 })
+    .resize(480, 480, { kernel: "nearest" })
+    .png({ palette: true })
+    .toFile(icon);
+  console.log(`Saved ${icon} (favicon)`);
+}

@@ -1,0 +1,17 @@
+{
+  "name": "samy-lol",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "ship": "node scripts/ship.mjs",
+    "sprite": "node scripts/draw-sprite.mjs"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
