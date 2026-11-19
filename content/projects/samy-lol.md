@@ -15,7 +15,6 @@ I wanted a site that was fast, easy to read and a little different from the usua
 - A "Random article" button, just like the real thing
 - A blog written in simple text files
 - Videos that load automatically from my YouTube channel
-- An edit history page that pulls my latest changes from GitHub
 - A contact form that e-mails me, limited to one message per visitor per day
 - A guest visitor counter that never stores anyone's IP address
 

@@ -28,7 +28,6 @@ contents and plain, readable articles.
 - **Projects:** everything I've built, each with its own write-up page.
 - **Videos:** my latest YouTube uploads, loaded automatically.
 - **Blog:** notes on what I'm building and learning.
-- **Edit history:** every change to the site, pulled live from GitHub.
 - **Contact:** a form that sends your message straight to my inbox.
 
 ## Little details

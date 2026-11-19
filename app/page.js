@@ -10,7 +10,7 @@ export const revalidate = 3600; // refresh the GitHub section hourly
 
 // Add new entries to the TOP of this list.
 const NEWS = [
-  ["19 November 2026", "Added a blog, project pages, search, dark mode and an edit history."],
+  ["19 November 2026", "Added a blog, project pages, search and dark mode."],
   ["18 November 2026", "Redesigned the site."],
   ["17 November 2026", "Launched samy.lol."],
 ];
@@ -135,7 +135,6 @@ export default async function Home() {
           {NEWS.map(([d, t]) => <tr key={d}><td>{d}</td><td>{t}</td></tr>)}
         </tbody>
       </table>
-      <p><Link href="/history">Full edit history →</Link></p>
 
       <h2 id="see-also">See also</h2>
       <ul className="plain">
