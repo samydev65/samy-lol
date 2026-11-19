@@ -13,58 +13,35 @@
 
 ## About
 
-**[samy.lol](https://samy.lol)** is where I put my projects, videos and notes. I'm into
-computer engineering, so I built it myself and laid it out like a classic encyclopedia page: a
-sidebar, an article with an infobox and a table of contents, and a contact form that sends
-messages straight to my inbox.
+**[samy.lol](https://samy.lol)** is my little corner of the internet. I'm into computer
+engineering, especially cloud systems and AI, and this is where I put the things I build, the
+videos I make and whatever I'm working on next.
 
-## Features
+I wanted it to feel different from the usual portfolio site, so it's laid out like a classic
+encyclopedia page, with a sidebar, an infobox with a pixel-art version of me, a table of
+contents and plain, readable articles.
 
-- **Encyclopedia-style layout:** serif headings, infobox, contents box and tables, built for
-  wide screens and still usable on phones.
-- **Pixel-art portrait:** the profile picture and browser icon are a hand-made 32×40 sprite,
-  drawn as text in [`scripts/draw-sprite.mjs`](scripts/draw-sprite.mjs).
-- **Projects and videos:** a project table and a video gallery that are easy to add to.
-- **Contact form:** messages are e-mailed to me with the sender's address as the reply-to,
-  limited to one per visitor per day with basic spam protection.
-- **Guest visitor counter:** a small badge that counts unique visitors.
-- **Privacy-friendly:** visitor IP addresses are never stored. They are turned into one-way
-  hashes, only to rate-limit the contact form and avoid double counting.
+## What's on the site
+
+- **Main page:** a quick intro, what I've built, what I'm into and recent updates.
+- **About:** more about me and the tools I use.
+- **Projects:** a table of everything I've built or am working on.
+- **Videos:** walkthroughs and demos of my projects.
+- **Contact:** a form that sends your message straight to my inbox, so I can write back.
+
+## Little details
+
+- My profile picture and the site icon are a pixel-art character I drew pixel by pixel.
+- The guest visitor counter in the bottom-left counts each visitor once.
+- The site doesn't store anyone's IP address. It only keeps a scrambled code to count visitors
+  and stop the contact form from being spammed.
 
 ## Built with
 
-- [Next.js](https://nextjs.org) and [React](https://react.dev)
-- Plain CSS
-- [Upstash Redis](https://upstash.com) for the visitor count and rate limiting
-- [Resend](https://resend.com) for contact-form e-mail
-- Hosted on [Vercel](https://vercel.com)
+[Next.js](https://nextjs.org), [React](https://react.dev) and plain CSS, hosted on
+[Vercel](https://vercel.com).
 
-## Running it locally
-
-You need [Node.js](https://nodejs.org) (LTS).
-
-```bash
-git clone https://github.com/samydev65/samy-lol.git
-cd samy-lol
-npm install
-npm run dev
-```
-
-Then open http://localhost:3000. Without a database connected, visits are saved to a local file
-(`.data/store.json`) that is not committed. Without an e-mail key, contact messages are
-printed in the terminal instead of sent.
-
-## Project layout
-
-| Folder | What's inside |
-|---|---|
-| `app/` | Pages (home, about, projects, videos, contact) and API routes |
-| `components/` | Shared pieces: sidebar navigation, tabs, infobox, contact form, visitor badge |
-| `lib/` | Site links and the storage code for visits and rate limiting |
-| `scripts/` | The pixel-art sprite drawer and a helper for pushing changes |
-| `public/` | Images |
-
-## Links
+## Find me
 
 - Website: **[samy.lol](https://samy.lol)**
 - GitHub: **[@samydev65](https://github.com/samydev65)**
