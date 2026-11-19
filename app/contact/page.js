@@ -7,7 +7,7 @@ export default function Contact() {
     <>
       <h1>Contact</h1>
       <p className="tagline">From samy.lol, the personal homepage</p>
-      <p>For questions, collaboration or feedback on the site, use any of the channels below.</p>
+      <p>Want to reach me about a project, a collab or the site? Here&apos;s where to find me.</p>
 
       <table className="wikitable">
         <tbody>

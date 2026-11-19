@@ -5,8 +5,8 @@ import { PROJECTS } from "./projects/data";
 
 // Add new entries to the TOP of this list.
 const NEWS = [
-  ["18 November 2026", "Site redesigned."],
-  ["17 November 2026", "samy.lol launched."],
+  ["18 November 2026", "Redesigned the site."],
+  ["17 November 2026", "Launched samy.lol."],
 ];
 
 export default function Home() {
@@ -17,38 +17,38 @@ export default function Home() {
 
       <Infobox
         title="Sammy"
-        caption="Sammy in 2026"
+        caption="Me, in pixel form"
         rows={[
-          ["Field", "Computer engineering"],
-          ["Focus", "Cloud systems, artificial intelligence"],
-          ["Interests", "Hardware, software"],
+          ["Into", "Computer engineering"],
+          ["Focus", "Cloud systems, AI"],
+          ["Also", "Hardware, web dev"],
           ["Website", <Link key="w" href="/">samy.lol</Link>],
         ]}
       />
 
       <p>
-        <b>Sammy</b> is a computer engineering student and developer with an interest in cloud
-        systems and artificial intelligence. This site collects Sammy&apos;s <Link href="/projects">projects</Link>,{" "}
-        <Link href="/videos">videos</Link> and notes, and is updated as new work is finished.
+        Hi, I&apos;m <b>Sammy</b>. I&apos;m into computer engineering, especially cloud systems and AI.
+        This is where I put my <Link href="/projects">projects</Link>,{" "}
+        <Link href="/videos">videos</Link> and notes, and I update it whenever I finish something new.
       </p>
       <p>
-        The work spans the full stack of computing, from circuits and hardware prototypes up to
-        web applications and cloud infrastructure.
+        I like working across the whole stack, from circuits and hardware up to web apps and the
+        cloud.
       </p>
 
-      <Toc items={[["projects", "Selected projects"], ["interests", "Interests"], ["updates", "Recent updates"], ["see-also", "See also"]]} />
+      <Toc items={[["projects", "What I’ve built"], ["interests", "What I’m into"], ["updates", "Recent updates"], ["see-also", "See also"]]} />
 
-      <h2 id="projects">Selected projects</h2>
+      <h2 id="projects">What I&apos;ve built</h2>
       <ul className="plain">
         {PROJECTS.map((p) => (
           <li key={p.name}><b>{p.name}</b> – {p.desc}</li>
         ))}
       </ul>
-      <p><Link href="/projects">Full list of projects →</Link></p>
+      <p><Link href="/projects">See all my projects →</Link></p>
 
-      <h2 id="interests">Interests</h2>
+      <h2 id="interests">What I&apos;m into</h2>
       <p>
-        Areas of interest include distributed and cloud computing, machine learning, embedded
+        Right now I&apos;m mostly into cloud and distributed computing, machine learning, embedded
         hardware and web development.
       </p>
 

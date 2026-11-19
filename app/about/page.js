@@ -18,31 +18,30 @@ export default function About() {
 
       <Infobox
         title="Sammy"
-        caption="Sammy in 2026"
+        caption="Me, in pixel form"
         rows={[
-          ["Field", "Computer engineering"],
+          ["Into", "Computer engineering"],
           ["Focus", "Cloud systems, AI"],
-          ["Interests", "Hardware, software"],
+          ["Also", "Hardware, web dev"],
         ]}
       />
 
       <p>
-        <b>Sammy</b> is a computer engineering student and developer, interested in how computers
-        work at every level, from circuits up to the cloud, with a recent focus on artificial
-        intelligence.
+        I&apos;m <b>Sammy</b>. I&apos;m interested in computer engineering and how computers work at
+        every level, from circuits up to the cloud. Lately I&apos;ve been focused on AI.
       </p>
 
-      <Toc items={[["background", "Background"], ["skills", "Skills"]]} />
+      <Toc items={[["what-i-do", "What I do"], ["skills", "Skills"]]} />
 
-      <h2 id="background">Background</h2>
+      <h2 id="what-i-do">What I do</h2>
       <p>
-        Sammy studies computer engineering and builds projects on the side, ranging from hardware
-        prototypes to web applications such as this site.
+        I build things in my free time, from hardware prototypes to web apps like this site. I
+        learn best by making stuff, so most of what I know came from projects.
       </p>
 
       <h2 id="skills">Skills</h2>
       <table className="wikitable">
-        <thead><tr><th>Area</th><th>Tools and topics</th></tr></thead>
+        <thead><tr><th>Area</th><th>What I use</th></tr></thead>
         <tbody>
           {SKILLS.map(([k, v]) => <tr key={k}><td><b>{k}</b></td><td>{v}</td></tr>)}
         </tbody>

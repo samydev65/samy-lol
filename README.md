@@ -5,7 +5,7 @@
 <h1 align="center">samy.lol</h1>
 
 <p align="center">
-  A personal homepage styled like an encyclopedia article.<br />
+  My personal homepage, styled like an encyclopedia article.<br />
   <a href="https://samy.lol"><b>Visit samy.lol →</b></a>
 </p>
 
@@ -13,9 +13,10 @@
 
 ## About
 
-**[samy.lol](https://samy.lol)** is a personal website for projects, videos and notes. It is
-laid out like a classic encyclopedia page: a sidebar, an article with an infobox and a table
-of contents, and a "Talk" page where visitors can leave a comment.
+**[samy.lol](https://samy.lol)** is where I put my projects, videos and notes. I'm into
+computer engineering, so I built it myself and laid it out like a classic encyclopedia page: a
+sidebar, an article with an infobox and a table of contents, and a "Talk" page where you can
+leave me a comment.
 
 ## Features
 

@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata = {
   title: { default: "samy.lol", template: "%s – samy.lol" },
-  description: "Projects, videos and notes by Sammy.",
+  description: "My projects, videos and notes.",
 };
 
 export default function RootLayout({ children }) {

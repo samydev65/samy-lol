@@ -9,8 +9,7 @@ export default function Projects() {
       <p className="tagline">From samy.lol, the personal homepage</p>
 
       <p>
-        This is a list of projects by Sammy, covering hardware, software and web work. Entries are
-        added as projects are started or completed.
+        Here&apos;s what I&apos;ve built or am working on. I add things as I start or finish them.
       </p>
 
       <table className="wikitable" style={{ width: "100%" }}>

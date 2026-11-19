@@ -14,7 +14,7 @@ export default function Videos() {
     <>
       <h1>Videos</h1>
       <p className="tagline">From samy.lol, the personal homepage</p>
-      <p>Project walkthroughs and demos. New videos will appear here as they are published.</p>
+      <p>Walkthroughs and demos of my projects. New videos show up here when I post them.</p>
 
       <div className="gallery">
         {VIDEOS.map((v, i) => (

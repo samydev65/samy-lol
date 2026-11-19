@@ -8,8 +8,8 @@ export default function Talk() {
       <h1>Talk:Sammy</h1>
       <p className="tagline">From samy.lol, the personal homepage</p>
       <p>
-        This is the talk page for samy.lol. Leave a comment about the site, a project or a video.
-        Each visitor can post one comment.
+        Got thoughts on the site, a project or a video? Leave me a comment. Everyone gets one, so
+        make it count.
       </p>
       <Comments />
     </>
