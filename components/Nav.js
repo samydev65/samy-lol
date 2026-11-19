@@ -7,6 +7,7 @@ export const PAGES = [
   ["/about", "About"],
   ["/projects", "Projects"],
   ["/videos", "Videos"],
+  ["/blog", "Blog"],
   ["/contact", "Contact"],
 ];
 

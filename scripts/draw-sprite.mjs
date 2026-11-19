@@ -1,72 +1,11 @@
 // Draws the 16-bit style character portrait used in the infobox (public/me.png)
 // and the browser-tab icon (app/icon.png).
-// Each string is one row of pixels; each letter is a color from PALETTE.
-// Edit the letters to redraw, then run:  node scripts/draw-sprite.mjs
+// The pixel grid and colors live in lib/sprite.js. Edit them there, then run:
+//   npm run sprite
 import sharp from "sharp";
 import path from "node:path";
+import { PALETTE, SPRITE } from "../lib/sprite.js";
 
-const PALETTE = {
-  ".": "#9fb7cf", // backdrop
-  K: "#1c1a24",   // outline
-  H: "#8a5a2b",   // hair
-  h: "#5e3a1a",   // hair shadow
-  L: "#c08a4a",   // hair highlight
-  S: "#f2c6a8",   // skin
-  s: "#d79f80",   // skin shadow
-  W: "#ffffff",   // eye white
-  E: "#3f6fb5",   // iris
-  P: "#1c1a24",   // pupil
-  M: "#b5605a",   // mouth
-  N: "#2f3e5c",   // crewneck sweatshirt
-  n: "#232f47",   // sweatshirt shadow
-  R: "#3d5078",   // ribbed collar
-  T: "#f4f4f4",   // white tee
-  t: "#cfd3da",   // white tee shadow
-};
-
-// 32 x 40
-const SPRITE = [
-  "................................",
-  "..........KK...KKK..KK..........",
-  "........KKLHK.KLHHKKLHK.........",
-  "......KKHLHHHKHLHHHHLHHHKK......",
-  ".....KHLHHhHHHLHHHhHHLLHHHK.....",
-  "....KHLHHhHHLLHHHHhHLHHHhHHK....",
-  "...KHLHHhHHLHHHhHHLHHHhHHLHHK...",
-  "..KHHLHhHHLHHhHHLHhHHHLHhHHLHK..",
-  "..KHLHhHHHhHHLHHHhHHHLHHhHHHLK..",
-  ".KHHhHHhHHHhHHhHHHHhHHhHHHhHHHK.",
-  ".KHLhHHhHHHhHHHhHHHhHHHhHHLhHHK.",
-  "..KHhHHHhHHhSHHHhHHSHhHHhHHhHK..",
-  "..KHhHHhHShHhSShHhSShHSHhHHhHK..",
-  "..KHHhHhSShSShSSShSShSSShHhHHK..",
-  "...KHHHShhhhSSSSSSSShhhhSHHHK...",
-  "...KHHHSSKKKKSSSSSSKKKKSSHHHK...",
-  "...KHHHSSWEPWSSSSSSWPEWSSHHHK...",
-  "...KHHHSSsEEsSSSSSSsEEsSSHHHK...",
-  "...KHKSSSSSSSSsSSSSSSSSSSSKHK...",
-  "...KHKSSSSSSSSsSSSSSSSSSSSKHK...",
-  "...KHKsSSSSSSsssSSSSSSSSSSKHK...",
-  "....KHhSSSSSSSSSSSSSSSSSShHK....",
-  ".....KKSSSSSSMMMMMMSSSSSSKK.....",
-  "......KsSSSSSSssssSSSSSSsK......",
-  "......KssSSSSSSSSSSSSSSssK......",
-  ".......KssSSSSSSSSSSSSssK.......",
-  "........KssSSSSSSSSSSssK........",
-  ".........KKssssssssssKK.........",
-  "...........KsSSSSSSsK...........",
-  "...........KsSSSSSSsK...........",
-  "....KKKKKKKKTTTTTTTTKKKKKKKK....",
-  "...KNNNNNNNRtTTTTTTtRNNNNNNNK...",
-  "..KNNNNNNNNRRttttttRRNNNNNNNNK..",
-  ".KNNNNNNNNNNRRRRRRRRNNNNNNNNNNK.",
-  ".KNNNNNNNNNNNNNNNNNNNNNNNNNNNNK.",
-  ".KNNnNNNNNNNNNNNNNNNNNNNNNNnNNK.",
-  ".KNnNNNNNNNNNNNNNNNNNNNNNNNNnNK.",
-  ".KNnNNNNNNNNNNNNNNNNNNNNNNNNnNK.",
-  ".KnNNNNNNNNNNNNNNNNNNNNNNNNNNnK.",
-  ".KnNNNNNNNNNNNNNNNNNNNNNNNNNNnK.",
-];
 
 const SCALE = 16; // each sprite pixel becomes 16x16 real pixels
 const out = process.argv[2] || path.join(process.cwd(), "public", "me.png");

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PROJECTS, STATUS_LABEL } from "./data";
 
 export const metadata = { title: "Projects" };
@@ -19,7 +20,7 @@ export default function Projects() {
         <tbody>
           {PROJECTS.map((p) => (
             <tr key={p.name}>
-              <td><b>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</b></td>
+              <td><b><Link href={`/projects/${p.slug}`}>{p.name}</Link></b></td>
               <td>{p.desc}</td>
               <td className={`status ${p.status}`}>{STATUS_LABEL[p.status]}</td>
               <td>{p.tags.map((t) => <span className="tag" key={t}>{t}</span>)}</td>

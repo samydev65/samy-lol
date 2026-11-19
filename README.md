@@ -23,23 +23,27 @@ contents and plain, readable articles.
 
 ## What's on the site
 
-- **Main page:** a quick intro, what I've built, what I'm into and recent updates.
-- **About:** more about me and the tools I use.
-- **Projects:** a table of everything I've built or am working on.
-- **Videos:** walkthroughs and demos of my projects.
-- **Contact:** a form that sends your message straight to my inbox, so I can write back.
+- **Main page:** a quick intro, what I'm up to right now, what I've built, my latest GitHub activity and recent updates.
+- **About:** more about me and the tools I use, complete with footnotes.
+- **Projects:** everything I've built, each with its own write-up page.
+- **Videos:** my latest YouTube uploads, loaded automatically.
+- **Blog:** notes on what I'm building and learning.
+- **Edit history:** every change to the site, pulled live from GitHub.
+- **Contact:** a form that sends your message straight to my inbox.
 
 ## Little details
 
-- My profile picture and the site icon are a pixel-art character I drew pixel by pixel.
-- The guest visitor counter in the bottom-left counts each visitor once.
-- The site doesn't store anyone's IP address. It only keeps a scrambled code to count visitors
-  and stop the contact form from being spammed.
+- **Search** every page, project and post from the sidebar, or hit **Random article**.
+- **Dark mode** that follows your device and remembers your choice.
+- My pixel-art profile picture **blinks**. Hover over it and it hops.
+- There's a hidden easter egg. (Hint: it's a very famous cheat code.)
+- Links shared on Discord, iMessage or X show a custom preview card.
+- The site doesn't store anyone's IP address and doesn't use tracking cookies.
 
 ## Built with
 
 [Next.js](https://nextjs.org), [React](https://react.dev) and plain CSS, hosted on
-[Vercel](https://vercel.com).
+[Vercel](https://vercel.com). Blog posts and project write-ups are plain Markdown files.
 
 ## Find me
 

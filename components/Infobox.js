@@ -1,24 +1,16 @@
-import fs from "node:fs";
-import path from "node:path";
+import Sprite from "./Sprite";
 
-// Your portrait lives at public/me.png (drawn by scripts/draw-sprite.mjs).
-const PHOTO = "/me.png";
-const hasPhoto = () => fs.existsSync(path.join(process.cwd(), "public", PHOTO));
-
+// Wikipedia-style info box.
 // rows: [[label, value], ...]  — a row with only a label becomes a section header.
-export default function Infobox({ title, caption, rows }) {
+// image: what to show at the top (defaults to my pixel-art sprite).
+export default function Infobox({ title, caption, rows, image }) {
   return (
     <table className="infobox">
       <tbody>
         <tr><th colSpan={2} className="infobox-title">{title}</th></tr>
         <tr>
           <td colSpan={2} className="infobox-image">
-            {hasPhoto() ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={PHOTO} alt={caption} width={256} height={320} />
-            ) : (
-              <div className="photo-placeholder">Photo coming soon</div>
-            )}
+            {image ?? <Sprite />}
             {caption && <div className="infobox-caption">{caption}</div>}
           </td>
         </tr>
