@@ -35,8 +35,8 @@ export async function POST(request) {
       return Response.json({ error: "You've already sent me a message today. I'll get back to you soon!" }, { status: 429 });
     }
   } catch (err) {
-    console.error("[contact form] storage error:", err);
-    return Response.json({ error: "The form isn't working right now. Please e-mail me directly." }, { status: 503 });
+    // The daily limit couldn't be checked. Still send the message rather than lose it.
+    console.error("[contact form] rate-limit storage error, sending anyway:", err);
   }
 
   const subject = `samy.lol message from ${name || email}`;
